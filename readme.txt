@@ -1,6 +1,6 @@
 === Random Posts from Category ===
 Contributors: sillybean
-Tags: widgets, random
+Tags: widget, random, posts
 Requires at least: 2.8
 Tested up to: 2.8.2
 Stable tag: 1.0
