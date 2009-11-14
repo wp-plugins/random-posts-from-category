@@ -3,7 +3,7 @@ Contributors: sillybean
 Tags: widget, random, posts
 Requires at least: 2.8
 Tested up to: 2.8.2
-Stable tag: 1.0
+Stable tag: 1.1
 
 A widget that lists random posts from a chosen category.  
 
@@ -30,5 +30,7 @@ Some dropdown menus are not displaying correctly after widget options have been 
 
 == Changelog ==
 
+= 1.1 =
+* Internationalization improvements (November 13, 2009)
 = 1.0 =
 * First release (August 6, 2009)

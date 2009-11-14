@@ -3,9 +3,10 @@
 Plugin Name: Random Posts from Category
 Plugin URI: http://sillybean.net/code/wordpress/
 Description: A widget that lists random posts from a chosen category.
-Version: 1.0
+Version: 1.1
 Author: Stephanie Leary
 Author URI: http://sillybean.net/
+Text Domain: random-posts-from-category 
 
 Changelog:
 = 1.0 =
@@ -87,7 +88,7 @@ class RandomPostsFromCategory extends WP_Widget {
 	function form( $instance ) {
 			//Defaults
 				$instance = wp_parse_args( (array) $instance, array( 
-						'title' => 'Recent Posts',
+						'title' => __('Recent Posts'),
 						'cat' => 1,
 						'showposts' => 1,
 						'content' => 'title',
@@ -96,40 +97,63 @@ class RandomPostsFromCategory extends WP_Widget {
 						'tags' => '<p><div><span><br><img><a><ul><ol><li><blockquote><cite><em><i><strong><b><h2><h3><h4><h5><h6>'));	
 	?>  
        
-			<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> 
-				<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $instance['title']; ?>" /></p>
-			
-			<p>
-            <p><label for="<?php echo $this->get_field_id('cat'); ?>"><?php _e('Show posts from category:'); ?></label> 
-			<?php wp_dropdown_categories(array('name' => $this->get_field_name('cat'), 'hide_empty'=>0, 'hierarchical'=>1, 'selected'=>$instance['cat'])); ?></label></p>
-            <p><input id="<?php echo $this->get_field_id('postlink'); ?>" name="<?php echo $this->get_field_name('postlink'); ?>" type="checkbox" <?php if ($instance['postlink']) { ?> checked="checked" <?php } ?> value="1" />
-            <label for="<?php echo $this->get_field_id('postlink'); ?>"><?php _e('Link widget title to category archive'); ?></label></p>
-            <p><label for="<?php echo $this->get_field_id('showposts'); ?>"><?php _e('Number of posts to show:'); ?></label> 
-				<input class="widefat" id="<?php echo $this->get_field_id('showposts'); ?>" name="<?php echo $this->get_field_name('showposts'); ?>" type="text" value="<?php echo $instance['showposts']; ?>" /></p>
-            <p><label for="<?php echo $this->get_field_id('content'); ?>"><?php _e('Display:'); ?></label> 
-			<select id="<?php echo $this->get_field_id('content'); ?>" name="<?php echo $this->get_field_name('content'); ?>" class="postform" />
-                <option value="title" <?php if ($instance['content'] == 'title') { ?> selected="selected" <?php } ?> >Title Only</option>
-                <option value="excerpt" <?php if ($instance['content'] == 'excerpt') { ?> selected="selected" <?php } ?> >Title and Excerpt</option>
-                <option value="content" <?php if ($instance['content'] == 'content') { ?> selected="selected" <?php } ?> >Title and Content</option>
-            </select></p>
-            <?php
-			if (function_exists('the_excerpt_reloaded')) { ?>
-				<p>
-				<label for="<?php echo $this->get_field_id('words'); ?>">Limit excerpts to how many words?:</label>
-				<input class="widefat" id="<?php echo $this->get_field_id('words'); ?>" name="<?php echo $this->get_field_name('words'); ?>" type="text" value="<?php echo $instance['words']; ?>" />
-				</p>
-				<p>
-				<label for="<?php echo $this->get_field_id('tags'); ?>">Allowed HTML tags in excerpts:</label>
-				<input class="widefat" id="<?php echo $this->get_field_id('tags'); ?>" name="<?php echo $this->get_field_name('tags'); ?>" type="text" value="<?php echo htmlspecialchars($instance['tags'], ENT_QUOTES); ?>" />
-				<br /><small>E.g.: &lt;p&gt;&lt;div&gt;&lt;span&gt;&lt;br&gt;&lt;img&gt;&lt;a&gt;&lt;ul&gt;&lt;ol&gt;&lt;li&gt;&lt;blockquote&gt;&lt;cite&gt;&lt;em&gt;&lt;i&gt;&lt;strong&gt;&lt;b&gt;&lt;h2&gt;&lt;h3&gt;&lt;h4&gt;&lt;h5&gt;&lt;h6&gt;
-				</small></p>
-			<?php } 
-	}
-}
+<p>
+<label for="<?php echo $this->get_field_id('title'); ?>"><?php __('Title:'); ?></label> 
+<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" 
+	name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $instance['title']; ?>" />
+</p>
+
+<p><label for="<?php echo $this->get_field_id('cat'); ?>"><?php __('Show posts from category:'); ?></label> 
+<?php wp_dropdown_categories(array('name' => $this->get_field_name('cat'), 'hide_empty'=>0, 'hierarchical'=>1, 'selected'=>$instance['cat'])); ?></label>
+</p>
+
+<p>
+<input id="<?php echo $this->get_field_id('postlink'); ?>" name="<?php echo $this->get_field_name('postlink'); ?>" 
+	type="checkbox" <?php if ($instance['postlink']) { ?> checked="checked" <?php } ?> value="1" />
+<label for="<?php echo $this->get_field_id('postlink'); ?>"><?php __('Link widget title to category archive'); ?></label>
+</p>
+
+<p><label for="<?php echo $this->get_field_id('showposts'); ?>"><?php __('Number of posts to show:'); ?></label> 
+<input class="widefat" id="<?php echo $this->get_field_id('showposts'); ?>" name="<?php echo $this->get_field_name('showposts'); ?>" 
+	type="text" value="<?php echo $instance['showposts']; ?>" />
+</p>
+
+<p>
+<label for="<?php echo $this->get_field_id('content'); ?>"><?php __('Display:'); ?></label> 
+<select id="<?php echo $this->get_field_id('content'); ?>" name="<?php echo $this->get_field_name('content'); ?>" class="postform" />
+	<option value="title"<?php selected( $instance['content'], 'title' ); ?>><?php __('Title Only'); ?></option>
+	<option value="excerpt"<?php selected( $instance['content'], 'excerpt' ); ?>><?php __('Title and Excerpt'); ?></option>
+	<option value="content"<?php selected( $instance['content'], 'content' ); ?>><?php __('Title and Content'); ?></option>
+</select>
+</p>
+
+<?php
+if (function_exists('the_excerpt_reloaded')) { ?>
+<p>
+<label for="<?php echo $this->get_field_id('words'); ?>"><?php __('Limit excerpts to how many words?:'); ?></label>
+<input class="widefat" id="<?php echo $this->get_field_id('words'); ?>" name="<?php echo $this->get_field_name('words'); ?>" 
+	type="text" value="<?php echo $instance['words']; ?>" />
+</p>
+
+<p>
+<label for="<?php echo $this->get_field_id('tags'); ?>"><?php __('Allowed HTML tags in excerpts:'); ?></label>
+<input class="widefat" id="<?php echo $this->get_field_id('tags'); ?>" name="<?php echo $this->get_field_name('tags'); ?>" 
+	type="text" value="<?php echo htmlspecialchars($instance['tags'], ENT_QUOTES); ?>" />
+<br />
+<small><?php __('E.g.: '); ?>&lt;p&gt;&lt;div&gt;&lt;span&gt;&lt;br&gt;&lt;img&gt;&lt;a&gt;&lt;ul&gt;&lt;ol&gt;&lt;li&gt;&lt;blockquote&gt;&lt;cite&gt;&lt;em&gt;&lt;i&gt;&lt;strong&gt;&lt;b&gt;&lt;h2&gt;&lt;h3&gt;&lt;h4&gt;&lt;h5&gt;&lt;h6&gt;
+</small>
+</p>
+<?php } // end if function_exists
+
+	} // function form
+} // widget class
 
 function random_from_cat_init() {
 	register_widget('RandomPostsFromCategory');
 }
 
 add_action('widgets_init', 'random_from_cat_init');
+
+$plugin_dir = basename(dirname(__FILE__));
+load_plugin_textdomain( 'RandomPostsFromCategory', 'wp-content/plugins/' . $plugin_dir, $plugin_dir );
 ?>
