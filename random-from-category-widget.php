@@ -98,28 +98,28 @@ class RandomPostsFromCategory extends WP_Widget {
 	?>  
        
 <p>
-<label for="<?php echo $this->get_field_id('title'); ?>"><?php __('Title:', 'random-posts-from-category'); ?></label> 
+<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'random-posts-from-category'); ?></label> 
 <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" 
 	name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $instance['title']; ?>" />
 </p>
 
-<p><label for="<?php echo $this->get_field_id('cat'); ?>"><?php __('Show posts from category:', 'random-posts-from-category'); ?></label> 
+<p><label for="<?php echo $this->get_field_id('cat'); ?>"><?php _e('Show posts from category:', 'random-posts-from-category'); ?></label> 
 <?php wp_dropdown_categories(array('name' => $this->get_field_name('cat'), 'hide_empty'=>0, 'hierarchical'=>1, 'selected'=>$instance['cat'])); ?></label>
 </p>
 
 <p>
 <input id="<?php echo $this->get_field_id('postlink'); ?>" name="<?php echo $this->get_field_name('postlink'); ?>" 
 	type="checkbox" <?php if ($instance['postlink']) { ?> checked="checked" <?php } ?> value="1" />
-<label for="<?php echo $this->get_field_id('postlink'); ?>"><?php __('Link widget title to category archive', 'random-posts-from-category'); ?></label>
+<label for="<?php echo $this->get_field_id('postlink'); ?>"><?php _e('Link widget title to category archive', 'random-posts-from-category'); ?></label>
 </p>
 
-<p><label for="<?php echo $this->get_field_id('showposts'); ?>"><?php __('Number of posts to show:', 'random-posts-from-category'); ?></label> 
+<p><label for="<?php echo $this->get_field_id('showposts'); ?>"><?php _e('Number of posts to show:', 'random-posts-from-category'); ?></label> 
 <input class="widefat" id="<?php echo $this->get_field_id('showposts'); ?>" name="<?php echo $this->get_field_name('showposts'); ?>" 
 	type="text" value="<?php echo $instance['showposts']; ?>" />
 </p>
 
 <p>
-<label for="<?php echo $this->get_field_id('content'); ?>"><?php __('Display:', 'random-posts-from-category'); ?></label> 
+<label for="<?php echo $this->get_field_id('content'); ?>"><?php _e('Display:', 'random-posts-from-category'); ?></label> 
 <select id="<?php echo $this->get_field_id('content'); ?>" name="<?php echo $this->get_field_name('content'); ?>" class="postform" />
 	<option value="title"<?php selected( $instance['content'], 'title' ); ?>><?php _e('Title Only', 'random-posts-from-category'); ?></option>
 	<option value="excerpt"<?php selected( $instance['content'], 'excerpt' ); ?>><?php _e('Title and Excerpt', 'random-posts-from-category'); ?></option>
@@ -130,17 +130,17 @@ class RandomPostsFromCategory extends WP_Widget {
 <?php
 if (function_exists('the_excerpt_reloaded')) { ?>
 <p>
-<label for="<?php echo $this->get_field_id('words'); ?>"><?php __('Limit excerpts to how many words?:', 'random-posts-from-category'); ?></label>
+<label for="<?php echo $this->get_field_id('words'); ?>"><?php _e('Limit excerpts to how many words?:', 'random-posts-from-category'); ?></label>
 <input class="widefat" id="<?php echo $this->get_field_id('words'); ?>" name="<?php echo $this->get_field_name('words'); ?>" 
 	type="text" value="<?php echo $instance['words']; ?>" />
 </p>
 
 <p>
-<label for="<?php echo $this->get_field_id('tags'); ?>"><?php __('Allowed HTML tags in excerpts:', 'random-posts-from-category'); ?></label>
+<label for="<?php echo $this->get_field_id('tags'); ?>"><?php _e('Allowed HTML tags in excerpts:', 'random-posts-from-category'); ?></label>
 <input class="widefat" id="<?php echo $this->get_field_id('tags'); ?>" name="<?php echo $this->get_field_name('tags'); ?>" 
 	type="text" value="<?php echo htmlspecialchars($instance['tags'], ENT_QUOTES); ?>" />
 <br />
-<small><?php __('E.g.: ', 'random-posts-from-category'); ?>&lt;p&gt;&lt;div&gt;&lt;span&gt;&lt;br&gt;&lt;img&gt;&lt;a&gt;&lt;ul&gt;&lt;ol&gt;&lt;li&gt;&lt;blockquote&gt;&lt;cite&gt;&lt;em&gt;&lt;i&gt;&lt;strong&gt;&lt;b&gt;&lt;h2&gt;&lt;h3&gt;&lt;h4&gt;&lt;h5&gt;&lt;h6&gt;
+<small><?php _e('E.g.: ', 'random-posts-from-category'); ?>&lt;p&gt;&lt;div&gt;&lt;span&gt;&lt;br&gt;&lt;img&gt;&lt;a&gt;&lt;ul&gt;&lt;ol&gt;&lt;li&gt;&lt;blockquote&gt;&lt;cite&gt;&lt;em&gt;&lt;i&gt;&lt;strong&gt;&lt;b&gt;&lt;h2&gt;&lt;h3&gt;&lt;h4&gt;&lt;h5&gt;&lt;h6&gt;
 </small>
 </p>
 <?php } // end if function_exists
