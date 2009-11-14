@@ -2,7 +2,7 @@
 Contributors: sillybean
 Tags: widget, random, posts
 Requires at least: 2.8
-Tested up to: 2.8.6
+Tested up to: 2.9
 Stable tag: 1.11
 
 A widget that lists random posts from a chosen category.  
