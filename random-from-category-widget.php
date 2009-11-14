@@ -154,6 +154,6 @@ function random_from_cat_init() {
 
 add_action('widgets_init', 'random_from_cat_init');
 
-$plugin_dir = basename(dirname(__FILE__));
+$plugin_dir = basename(dirname(__FILE__)). '/languages';
 load_plugin_textdomain( 'RandomPostsFromCategory', 'wp-content/plugins/' . $plugin_dir, $plugin_dir );
 ?>
