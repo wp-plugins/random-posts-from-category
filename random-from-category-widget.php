@@ -3,7 +3,7 @@
 Plugin Name: Random Posts from Category
 Plugin URI: http://sillybean.net/code/wordpress/
 Description: A widget that lists random posts from a chosen category.
-Version: 1.1
+Version: 1.11
 Author: Stephanie Leary
 Author URI: http://sillybean.net/
 Text Domain: random-posts-from-category 
@@ -121,9 +121,9 @@ class RandomPostsFromCategory extends WP_Widget {
 <p>
 <label for="<?php echo $this->get_field_id('content'); ?>"><?php __('Display:', 'random-posts-from-category'); ?></label> 
 <select id="<?php echo $this->get_field_id('content'); ?>" name="<?php echo $this->get_field_name('content'); ?>" class="postform" />
-	<option value="title"<?php selected( $instance['content'], 'title' ); ?>><?php __('Title Only', 'random-posts-from-category'); ?></option>
-	<option value="excerpt"<?php selected( $instance['content'], 'excerpt' ); ?>><?php __('Title and Excerpt', 'random-posts-from-category'); ?></option>
-	<option value="content"<?php selected( $instance['content'], 'content' ); ?>><?php __('Title and Content', 'random-posts-from-category'); ?></option>
+	<option value="title"<?php selected( $instance['content'], 'title' ); ?>><?php _e('Title Only', 'random-posts-from-category'); ?></option>
+	<option value="excerpt"<?php selected( $instance['content'], 'excerpt' ); ?>><?php _e('Title and Excerpt', 'random-posts-from-category'); ?></option>
+	<option value="content"<?php selected( $instance['content'], 'content' ); ?>><?php _e('Title and Content', 'random-posts-from-category'); ?></option>
 </select>
 </p>
 
