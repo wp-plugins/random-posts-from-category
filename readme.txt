@@ -3,13 +3,17 @@ Contributors: sillybean
 Tags: widget, random, posts
 Requires at least: 2.8
 Tested up to: 2.9
-Stable tag: 1.11
+Stable tag: 1.12
 
 A widget that lists random posts from a chosen category.  
 
 == Description ==
 
 This widget will list random posts from a chosen category. You can choose how many posts to display, and whether to show the excerpt or the full content in addition to the post title. You may also link the widget title to the category archive if you like.
+
+=== Translations ===
+
+Belorussian (be_BY) by <a href="http://fatcow.com">FatCow</a>.
 
 == Installation ==
 
@@ -30,6 +34,8 @@ Some dropdown menus are not displaying correctly after widget options have been 
 
 == Changelog ==
 
+= 1.12 =
+* Belorussian (be_BY) translation by <a href="http://fatcow.com">FatCow</a>. (November 15, 2009)
 = 1.11 =
 * Fixed a bug with the dropdown options (November 14, 2009)
 = 1.1 =

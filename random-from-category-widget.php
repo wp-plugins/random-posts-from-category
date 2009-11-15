@@ -3,7 +3,7 @@
 Plugin Name: Random Posts from Category
 Plugin URI: http://sillybean.net/code/wordpress/
 Description: A widget that lists random posts from a chosen category.
-Version: 1.11
+Version: 1.12
 Author: Stephanie Leary
 Author URI: http://sillybean.net/
 Text Domain: random-posts-from-category 
@@ -154,6 +154,7 @@ function random_from_cat_init() {
 
 add_action('widgets_init', 'random_from_cat_init');
 
+// i18n
 $plugin_dir = basename(dirname(__FILE__)). '/languages';
 load_plugin_textdomain( 'RandomPostsFromCategory', 'wp-content/plugins/' . $plugin_dir, $plugin_dir );
 ?>
