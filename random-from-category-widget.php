@@ -9,8 +9,16 @@ Author URI: http://sillybean.net/
 Text Domain: random-posts-from-category 
 
 Changelog:
+= 1.13 =
+* Fixed a bug where the dropdown would turn into plain text after saving options. (November 18, 2009)
+= 1.12 =
+* Belorussian (be_BY) translation by <a href="http://fatcow.com">FatCow</a>. (November 15, 2009)
+= 1.11 =
+* Fixed a bug with the dropdown options (November 14, 2009)
+= 1.1 =
+* Internationalization improvements (November 13, 2009)
 = 1.0 =
-* First release (August 3, 2009)
+* First release (August 6, 2009)
 
 Copyright 2009  Stephanie Leary  (email : steph@sillybean.net)
 
@@ -120,7 +128,7 @@ class RandomPostsFromCategory extends WP_Widget {
 
 <p>
 <label for="<?php echo $this->get_field_id('content'); ?>"><?php _e('Display:', 'random-posts-from-category'); ?></label> 
-<select id="<?php echo $this->get_field_id('content'); ?>" name="<?php echo $this->get_field_name('content'); ?>" class="postform" />
+<select id="<?php echo $this->get_field_id('content'); ?>" name="<?php echo $this->get_field_name('content'); ?>" class="postform">
 	<option value="title"<?php selected( $instance['content'], 'title' ); ?>><?php _e('Title Only', 'random-posts-from-category'); ?></option>
 	<option value="excerpt"<?php selected( $instance['content'], 'excerpt' ); ?>><?php _e('Title and Excerpt', 'random-posts-from-category'); ?></option>
 	<option value="content"<?php selected( $instance['content'], 'content' ); ?>><?php _e('Title and Content', 'random-posts-from-category'); ?></option>
