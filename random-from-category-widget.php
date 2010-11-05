@@ -3,12 +3,14 @@
 Plugin Name: Random Posts from Category
 Plugin URI: http://sillybean.net/code/wordpress/
 Description: A widget that lists random posts from a chosen category.
-Version: 1.12
+Version: 1.14
 Author: Stephanie Leary
 Author URI: http://sillybean.net/
 Text Domain: random-posts-from-category 
 
 Changelog:
+= 1.14 =
+* Added options to display content or excerpt without the title (November 5, 2010)
 = 1.13 =
 * Fixed a bug where the dropdown would turn into plain text after saving options. (November 18, 2009)
 = 1.12 =
@@ -16,7 +18,7 @@ Changelog:
 = 1.11 =
 * Fixed a bug with the dropdown options (November 14, 2009)
 = 1.1 =
-* Internationalization improvements (November 13, 2009)
+* Internationalization improvements (November 13, 2009)\
 = 1.0 =
 * First release (August 6, 2009)
 
@@ -51,7 +53,7 @@ class RandomPostsFromCategory extends WP_Widget {
 			$title = apply_filters('widget_title', empty( $instance['title'] ) ? __( 'Random Posts' , 'random-posts-from-category') : $instance['title']);
 			
 			echo $before_widget;
-			if ( $title) {
+			if ( $title ) {
 				if ($instance['postlink'] == 1)  {
 					$before_title .= '<a href="'.get_category_link($instance['cat']).'">';
 					$after_title .= '</a>';
@@ -65,14 +67,18 @@ class RandomPostsFromCategory extends WP_Widget {
 			// the Loop
 			if ($random->have_posts()) : 
 			while ($random->have_posts()) : $random->the_post(); ?>
-                <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                <?php 
-				if ($instance['content'] == 'excerpt') {
+                <li>
+				<?php
+					if ($instance['content'] != 'excerpt-notitle' && $instance['content'] != 'content-notitle') { ?>
+					<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+				<?php
+				} 
+				if ($instance['content'] == 'excerpt' || $instance['content'] == 'excerpt-notitle') {
 					if (function_exists('the_excerpt_reloaded')) 
 						the_excerpt_reloaded($instance['words'], $instance['tags'], 'content', FALSE, '', '', '1', '');
 					else the_excerpt();  // this covers Advanced Excerpt as well as the built-in one
 				}
-				if ($instance['content'] == 'content') the_content();
+				if ($instance['content'] == 'content' || $instance['content'] == 'content-notitle') the_content();
 			endwhile; endif;
 			?>
 			</ul>
@@ -131,7 +137,9 @@ class RandomPostsFromCategory extends WP_Widget {
 <select id="<?php echo $this->get_field_id('content'); ?>" name="<?php echo $this->get_field_name('content'); ?>" class="postform">
 	<option value="title"<?php selected( $instance['content'], 'title' ); ?>><?php _e('Title Only', 'random-posts-from-category'); ?></option>
 	<option value="excerpt"<?php selected( $instance['content'], 'excerpt' ); ?>><?php _e('Title and Excerpt', 'random-posts-from-category'); ?></option>
+	<option value="excerpt-notitle"<?php selected( $instance['content'], 'excerpt-notitle' ); ?>><?php _e('Excerpt without Title', 'random-posts-from-category'); ?></option>
 	<option value="content"<?php selected( $instance['content'], 'content' ); ?>><?php _e('Title and Content', 'random-posts-from-category'); ?></option>
+	<option value="content-notitle"<?php selected( $instance['content'], 'content-notitle' ); ?>><?php _e('Content without Title', 'random-posts-from-category'); ?></option>
 </select>
 </p>
 
