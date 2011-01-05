@@ -11,9 +11,11 @@ A widget that lists random posts from a chosen category.
 
 This widget will list random posts from a chosen category. You can choose how many posts to display, and whether to show the excerpt or the full content in addition to the post title. You may also link the widget title to the category archive if you like.
 
-= Translations =
+== Translations ==
 
 Belorussian (be_BY) by <a href="http://fatcow.com">FatCow</a>.
+
+If you would like to send me a translation, please write to me through <a href="http://sillybean.net/about/contact/">my contact page</a>. Let me know which plugin you've translated and how you would like to be credited. I will write you back so you can attach the files in your reply.
 
 == Installation ==
 
