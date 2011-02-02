@@ -3,40 +3,11 @@
 Plugin Name: Random Posts from Category
 Plugin URI: http://sillybean.net/code/wordpress/
 Description: A widget that lists random posts from a chosen category.
-Version: 1.14
+Version: 1.15
 Author: Stephanie Leary
 Author URI: http://sillybean.net/
 Text Domain: random-posts-from-category 
-
-Changelog:
-= 1.14 =
-* Added options to display content or excerpt without the title (November 5, 2010)
-= 1.13 =
-* Fixed a bug where the dropdown would turn into plain text after saving options. (November 18, 2009)
-= 1.12 =
-* Belorussian (be_BY) translation by <a href="http://fatcow.com">FatCow</a>. (November 15, 2009)
-= 1.11 =
-* Fixed a bug with the dropdown options (November 14, 2009)
-= 1.1 =
-* Internationalization improvements (November 13, 2009)\
-= 1.0 =
-* First release (August 6, 2009)
-
-Copyright 2009  Stephanie Leary  (email : steph@sillybean.net)
-
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+License: GPL2
 */
 
 class RandomPostsFromCategory extends WP_Widget {
@@ -56,7 +27,7 @@ class RandomPostsFromCategory extends WP_Widget {
 			if ( $title ) {
 				if ($instance['postlink'] == 1)  {
 					$before_title .= '<a href="'.get_category_link($instance['cat']).'">';
-					$after_title .= '</a>';
+					$after_title = '</a>'.$after_title;
 				}
 				echo $before_title.$title.$after_title;
 			}

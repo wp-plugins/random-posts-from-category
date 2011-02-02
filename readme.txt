@@ -2,8 +2,8 @@
 Contributors: sillybean
 Tags: widget, random, posts
 Requires at least: 2.8
-Tested up to: 2.9
-Stable tag: 1.14
+Tested up to: 3.1
+Stable tag: 1.15
 
 A widget that lists random posts from a chosen category.  
 
@@ -36,6 +36,8 @@ Some dropdown menus are not displaying correctly after widget options have been 
 
 == Changelog ==
 
+= 1.15 =
+* Fixed an HTML problem with linked titles. (Thanks, Anthony Eden!)
 = 1.14 =
 * Added options to display content or excerpt without the title (November 5, 2010)
 = 1.13 =
@@ -45,6 +47,6 @@ Some dropdown menus are not displaying correctly after widget options have been 
 = 1.11 =
 * Fixed a bug with the dropdown options (November 14, 2009)
 = 1.1 =
-* Internationalization improvements (November 13, 2009)
+* Internationalization improvements (November 13, 2009)\
 = 1.0 =
 * First release (August 6, 2009)
