@@ -3,7 +3,7 @@ Contributors: sillybean
 Tags: widget, random, posts
 Requires at least: 2.8
 Tested up to: 3.1
-Stable tag: 1.15
+Stable tag: 1.16
 
 A widget that lists random posts from a chosen category.  
 
@@ -14,6 +14,8 @@ This widget will list random posts from a chosen category. You can choose how ma
 == Translations ==
 
 Belorussian (be_BY) by <a href="http://fatcow.com">FatCow</a>.
+Romanian (ro_RO) by Web Geek Science (<a href="http://webhostinggeeks.com/">Web
+Hosting Geeks</a>)
 
 If you would like to send me a translation, please write to me through <a href="http://sillybean.net/about/contact/">my contact page</a>. Let me know which plugin you've translated and how you would like to be credited. I will write you back so you can attach the files in your reply.
 
@@ -36,6 +38,9 @@ Some dropdown menus are not displaying correctly after widget options have been 
 
 == Changelog ==
 
+= 1.16 =
+* Romanian (ro_RO) translation by Web Geek Science (<a href="http://webhostinggeeks.com/">Web
+Hosting Geeks</a>)
 = 1.15 =
 * Fixed an HTML problem with linked titles. (Thanks, Anthony Eden!)
 = 1.14 =
