@@ -3,7 +3,7 @@
 Plugin Name: Random Posts from Category
 Plugin URI: http://sillybean.net/code/wordpress/
 Description: A widget that lists random posts from a chosen category.
-Version: 1.16
+Version: 1.2
 Author: Stephanie Leary
 Author URI: http://sillybean.net/
 Text Domain: random-posts-from-category 
@@ -34,10 +34,19 @@ class RandomPostsFromCategory extends WP_Widget {
 			?>
 			<ul>
 			<?php 
-			$random = new WP_Query("cat=".$instance['cat']."&showposts=".$instance['showposts']."&orderby=rand"); 
+			$args = array(
+				'cat' => $instance['cat'],
+				'posts_per_page' => $instance['showposts'],
+				'orderby' => 'rand',
+			);
+			$args = apply_filters( 'random_posts_from_category_args', $args );
+			$random = new WP_Query( $args ); 
 			// the Loop
 			if ($random->have_posts()) : 
-			while ($random->have_posts()) : $random->the_post(); ?>
+			while ($random->have_posts()) : $random->the_post(); 	
+				global $post;
+				setup_postdata($post);
+				?>
                 <li>
 				<?php
 					if ($instance['content'] != 'excerpt-notitle' && $instance['content'] != 'content-notitle') { ?>
@@ -55,6 +64,9 @@ class RandomPostsFromCategory extends WP_Widget {
 			</ul>
 			<?php
 			echo $after_widget;
+			
+			wp_reset_postdata();
+			wp_reset_query();
 	}
 	
 	
@@ -142,6 +154,4 @@ function random_from_cat_init() {
 add_action('widgets_init', 'random_from_cat_init');
 
 // i18n
-$plugin_dir = basename(dirname(__FILE__)). '/languages';
-load_plugin_textdomain( 'RandomPostsFromCategory', 'wp-content/plugins/' . $plugin_dir, $plugin_dir );
-?>
+load_plugin_textdomain( 'RandomPostsFromCategory', false, plugin_dir_path(__FILE__) . '/languages' );
