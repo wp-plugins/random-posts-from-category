@@ -1,8 +1,11 @@
 === Random Posts from Category ===
 Contributors: sillybean
 Tags: widget, random, posts
+Donate link: http://stephanieleary.com/code/wordpress/random-posts-from-category/
+Text Domain: RandomPostsFromCategory
+Domain Path: /languages
 Requires at least: 2.8
-Tested up to: 3.1
+Tested up to: 4.1
 Stable tag: 1.16
 
 A widget that lists random posts from a chosen category.  
@@ -26,11 +29,16 @@ If you would like to send me a translation, please write to me through <a href="
 
 Go to Appearance &rarr; Widgets to add widgets to your sidebar in widget-ready themes.
 
-== Frequently Asked Questions ==
+To use with a custom post type, add this to your post type plugin file or theme functions.php:
 
-= Known bugs =
+`
+add_filter('random_posts_from_category_args', 'random_post_widget_args');
 
-Some dropdown menus are not displaying correctly after widget options have been saved. This appears to be affecting many widgets, not just this one. This will be fixed as soon as we figure out what's happening! In the meantime, simply refreshing the widget page in your browser will knock the menus back into shape.
+function random_post_widget_args($args) {
+	$args['post_type'] = 'mycpt_name';
+	return $args;
+}
+`
 
 == Screenshots ==
 
@@ -38,6 +46,8 @@ Some dropdown menus are not displaying correctly after widget options have been 
 
 == Changelog ==
 
+= 1.2 =
+* Added 'random_posts_from_category_args' filter to query arguments; fixed query reset.
 = 1.16 =
 * Romanian (ro_RO) translation by Web Geek Science (<a href="http://webhostinggeeks.com/">Web
 Hosting Geeks</a>)
