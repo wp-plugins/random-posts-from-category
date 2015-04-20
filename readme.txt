@@ -5,7 +5,7 @@ Donate link: http://stephanieleary.com/code/wordpress/random-posts-from-category
 Text Domain: RandomPostsFromCategory
 Domain Path: /languages
 Requires at least: 2.8
-Tested up to: 4.1
+Tested up to: 4.2
 Stable tag: 1.16
 
 A widget that lists random posts from a chosen category.  
